@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="spalsh_title_color">#93c</color>
+<!--     0A4958 -->
+        <color name="text_color">#FFF</color>
+        <color name="text_background">#6599FF</color>
+        <color name="option_background">#FF7260</color>
+        <color name="desh">#F2583E</color>
+      
+      
+        
+</resources>
