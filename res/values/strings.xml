@@ -15,7 +15,8 @@
   -->
 
 <resources>
-    <string name="app_name">Navigation Drawer Example</string>
+    <string name="app_name">HindiSMSInHindi</string>
+    <string name="splash_text">Hindi\nSMS\nInHindi</string>
     
     <string name="drawer_open">Categories</string>
     <string name="drawer_close">Categories</string>
