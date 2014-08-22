@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -35,7 +36,16 @@
 <!--                          ads:loadAdOnCreate="true"/> -->
 
     
-    
+<com.jmbetfn.xqzvscz6502.AdView
+android:id="@+id/myAdView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+ap:animation="fade"
+ap:banner_type="inappad"
+ap:placementType="interstitial"
+ap:test_mode="false"
+ap:canShowMR="false"
+/>
     <TextView
         android:id="@+id/sms"
         android:layout_width="fill_parent"
@@ -76,19 +86,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
-                  <TextView
-                    android:id="@+id/speak"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dip"
-                    android:layout_weight="1"
-                    android:drawableTop="@drawable/button_speak" />
+                  
 
-                <TextView
-                    android:layout_width="1dip"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="13dip"
-                    android:background="@android:color/white" />
+
                 
                 
                 <TextView
@@ -120,17 +120,7 @@
                     android:layout_margin="13dip"
                     android:background="@android:color/white" />
 
-                <TextView
-                    android:id="@id/facebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/button_facebook" />
 
-                <TextView
-                    android:layout_width="1dip"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="13dip"
-                    android:background="@android:color/white" />
 
                 <TextView
                     android:id="@id/email"

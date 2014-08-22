@@ -89,12 +89,10 @@ TextToSpeech.OnInitListener{
                  holder.txtTitle = (TextView) convertView.findViewById(R.id.sms);
                  holder.optionRow = (LinearLayout) convertView.findViewById(R.id.optionRow);
                  holder.message = (TextView) convertView.findViewById(R.id.message);
-                 holder.facebook = (TextView) convertView.findViewById(R.id.facebook);
                  holder.email = (TextView) convertView.findViewById(R.id.email);
                  holder.whatsapp = (TextView) convertView.findViewById(R.id.whatsapp);
                  holder.share = (TextView) convertView.findViewById(R.id.share);
                  holder.copy = (TextView) convertView.findViewById(R.id.copy);
-                 holder.speak= (TextView) convertView.findViewById(R.id.speak);
                  
                  convertView.setTag(holder);
         	 
@@ -125,12 +123,7 @@ TextToSpeech.OnInitListener{
 				holder.txtTitle.setText(this.values[position] );
 		 }
  
-		 holder.speak.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					speakOut(values[position]);
-				}
-			});
+
 		 
         holder.message.setOnClickListener(new OnClickListener() {
 			@Override
