@@ -84,17 +84,12 @@ public class MainActivity extends Activity {
     private String[] mPlanetTitles;
     public static List<Category> mCategories=new ArrayList<Category>();
     
-    static Prm air = null;
-    AdListener adCallbackListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        if(air==null){
-        	air=new Prm(this, adCallbackListener, false);
-        	air.runSmartWallAd();
-        }
+        
         	
         sharedpreferences=getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE);
      	mDbHelper = new MessageDBAdapter(this);
@@ -149,37 +144,7 @@ public class MainActivity extends Activity {
             selectItem(0);
         }
         
-        adCallbackListener=new AdListener() {
-            
-            @Override
-            public void onSDKIntegrationError(String message) {
-            //Here you will receive message from SDK if it detects any integration issue.
-            }
-
-            public void onSmartWallAdShowing() {
-            // This will be called by SDK when it’s showing any of the SmartWall ad.
-            }
-
-            @Override
-            public void onSmartWallAdClosed() {
-            // This will be called by SDK when the SmartWall ad is closed.
-            }
-
-            @Override
-            public void onAdError(String message) {
-            //This will get called if any error occurred during ad serving.
-            }
-            @Override
-    		public void onAdCached(AdType arg0) {
-    		//This will get called when an ad is cached. 
-    		
-    		}
-    		 @Override
-    		public void noAdAvailableListener() {
-    		//this will get called when ad is not available 
-    		
-    		}
-         };
+       
     }
 
     @Override
@@ -267,6 +232,7 @@ public class MainActivity extends Activity {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
+        getActionBar().setSubtitle("Long press to start selection");
     }
 
     @Override
@@ -275,17 +241,5 @@ public class MainActivity extends Activity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-    
-    @Override
-    public void onBackPressed() {
-
-    //Displaying Cached SmartWall Ad
-    try {
-    	 air.runCachedAd(this, AdType.smartwall);   //Will show the ad is it's available in cache. 
-        } catch (Exception e) 
-         {
-          super.onBackPressed();
-         }
-    }
-
+   
 }

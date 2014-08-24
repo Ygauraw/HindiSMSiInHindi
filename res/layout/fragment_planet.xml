@@ -12,21 +12,13 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
+-->
 
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/messageList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    android:cacheColorHint="#00000000"
-    android:divider="@color/text_background"
-    android:drawingCacheQuality="auto"
-    android:fastScrollEnabled="true"
-    android:focusableInTouchMode="true"
-    android:isScrollContainer="true"
-    android:keepScreenOn="true"
-    android:scrollbarStyle="outsideOverlay"
-    android:smoothScrollbar="true"
-    android:dividerHeight="1dp"
-   />
+    android:background="@drawable/drawbutton3"
+    android:divider="@color/option_background"
+    android:dividerHeight="3dp"
+    android:focusable="false" />

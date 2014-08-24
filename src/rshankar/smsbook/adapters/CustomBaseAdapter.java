@@ -86,13 +86,13 @@ TextToSpeech.OnInitListener{
         		 holder = new ViewHolder();
         		 
         	
-                 holder.txtTitle = (TextView) convertView.findViewById(R.id.sms);
-                 holder.optionRow = (LinearLayout) convertView.findViewById(R.id.optionRow);
-                 holder.message = (TextView) convertView.findViewById(R.id.message);
-                 holder.email = (TextView) convertView.findViewById(R.id.email);
-                 holder.whatsapp = (TextView) convertView.findViewById(R.id.whatsapp);
-                 holder.share = (TextView) convertView.findViewById(R.id.share);
-                 holder.copy = (TextView) convertView.findViewById(R.id.copy);
+//                 holder.txtTitle = (TextView) convertView.findViewById(R.id.sms);
+//                 holder.optionRow = (LinearLayout) convertView.findViewById(R.id.optionRow);
+//                 holder.message = (TextView) convertView.findViewById(R.id.message);
+//                 holder.email = (TextView) convertView.findViewById(R.id.email);
+//                 holder.whatsapp = (TextView) convertView.findViewById(R.id.whatsapp);
+//                 holder.share = (TextView) convertView.findViewById(R.id.share);
+//                 holder.copy = (TextView) convertView.findViewById(R.id.copy);
                  
                  convertView.setTag(holder);
         	 
