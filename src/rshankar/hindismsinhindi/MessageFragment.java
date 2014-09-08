@@ -1,5 +1,9 @@
 package rshankar.hindismsinhindi;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Fragment;
@@ -20,6 +24,7 @@ import android.widget.Toast;
 public class MessageFragment extends Fragment{
 	String message[];
 	String finalmessage="";
+	AdView mAdView;
 	 public static final String ARG_PLANET_NUMBER = "planet_number";
 	 ListView messageList;
      public MessageFragment() {
@@ -38,12 +43,24 @@ public class MessageFragment extends Fragment{
          int i = getArguments().getInt(ARG_PLANET_NUMBER);
        String title=getArguments().getString("title");
        messageList=(ListView) rootView.findViewById(R.id.messageList);
+       mAdView = (AdView)rootView.findViewById(R.id.adView);
+       mAdView.loadAd(new AdRequest.Builder().build());
        messageList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
        messageList.setMultiChoiceModeListener(new ModeCallback());
        messageList.setLongClickable(true);
-       messageList.setAdapter( new ArrayAdapter<String>(getActivity(),
-               R.layout.listrow_sms, message));
+//       messageList.setAdapter( new ArrayAdapter<String>(getActivity(),
+//               R.layout.listrow_sms, message));
                
+       messageList.setAdapter( new MessageAdapter(getActivity(), 0, message));
+       
+       mAdView.setAdListener(new AdListener() {
+    	   @Override
+    	    public void onAdLoaded() {
+//    	        Toast.makeText(getActivity(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+    	        mAdView.setVisibility(View.VISIBLE);
+    	    }
+ 
+	});
 //       messageList.setAdapter(new CustomBaseAdapter(getActivity(),message));
 //         getActivity().setTitle(title);
          return rootView;

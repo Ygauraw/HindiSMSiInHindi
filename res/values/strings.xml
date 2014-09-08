@@ -17,7 +17,7 @@
 <resources>
     <string name="app_name">HindiSMSInHindi</string>
     <string name="splash_text">Hindi\nSMS\nInHindi</string>
-    
+    <string name="ad_unit_id">ca-app-pub-6809957338111953/7393020597</string>
     <string name="drawer_open">Categories</string>
     <string name="drawer_close">Categories</string>
     <string name="action_websearch">Web search</string>
