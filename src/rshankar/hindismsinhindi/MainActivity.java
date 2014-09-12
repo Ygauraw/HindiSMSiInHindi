@@ -19,6 +19,9 @@ package rshankar.hindismsinhindi;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.yrkfgo.assxqx4.AdListener;
+import com.yrkfgo.assxqx4.MA;
+
 import rshankar.hindismsinhindi.dataclasses.Category;
 import rshankar.smsbook.adapters.CategoryAdapter;
 import rshankar.smsbook.database.MessageDBAdapter;
@@ -38,39 +41,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.jmbetfn.xqzvscz6502.AdListener;
-import com.jmbetfn.xqzvscz6502.AdListener.AdType;
-import com.jmbetfn.xqzvscz6502.Prm;
-
-/**
- * This example illustrates a common usage of the DrawerLayout widget
- * in the Android support library.
- * <p/>
- * <p>When a navigation (left) drawer is present, the host activity should detect presses of
- * the action bar's Up affordance as a signal to open and close the navigation drawer. The
- * ActionBarDrawerToggle facilitates this behavior.
- * Items within the drawer should fall into one of two categories:</p>
- * <p/>
- * <ul>
- * <li><strong>View switches</strong>. A view switch follows the same basic policies as
- * list or tab navigation in that a view switch does not create navigation history.
- * This pattern should only be used at the root activity of a task, leaving some form
- * of Up navigation active for activities further down the navigation hierarchy.</li>
- * <li><strong>Selective Up</strong>. The drawer allows the user to choose an alternate
- * parent for Up navigation. This allows a user to jump across an app's navigation
- * hierarchy at will. The application should treat this as it treats Up navigation from
- * a different task, replacing the current task stack using TaskStackBuilder or similar.
- * This is the only form of navigation drawer that should be used outside of the root
- * activity of a task.</li>
- * </ul>
- * <p/>
- * <p>Right side drawers should be used for actions, not navigation. This follows the pattern
- * established by the Action Bar that navigation should be to the left and actions to the right.
- * An action should be an operation performed on the current contents of the window,
- * for example enabling or disabling a data overlay on top of the current content.</p>
- */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AdListener{
 	public static SharedPreferences sharedpreferences;
 	public static final String SHARED_PREFERENCE_KEY="SMSBOOK_PREFERENCE";
 	public static MessageDBAdapter mDbHelper;
@@ -83,12 +56,18 @@ public class MainActivity extends Activity {
     private CharSequence mTitle;
     private String[] mPlanetTitles;
     public static List<Category> mCategories=new ArrayList<Category>();
+    private static MA air;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        if(air==null)
+        	air=new MA(this, this, false);
+       //Caching Smartwall Ad. 
+        air.callSmartWallAd();
+        air.call360Ad(this, 0, true, null);
         
         	
         sharedpreferences=getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE);
@@ -241,5 +220,53 @@ public class MainActivity extends Activity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-   
+
+	@Override
+	public void noAdAvailableListener() {
+	Toast.makeText(MainActivity.this, "noAdAvailableListener", Toast.LENGTH_SHORT).show();
+	
+		
+	}
+
+	@Override
+	public void onAdCached(AdType arg0) {
+		Toast.makeText(MainActivity.this, "onAdCached", Toast.LENGTH_SHORT).show();
+		
+	}
+
+	@Override
+	public void onAdError(String arg0) {
+		Toast.makeText(MainActivity.this, "onAdError", Toast.LENGTH_SHORT).show();
+		
+	}
+
+	@Override
+	public void onSDKIntegrationError(String arg0) {
+		Toast.makeText(MainActivity.this, "onSDKIntegrationError", Toast.LENGTH_SHORT).show();
+		
+	}
+
+	@Override
+	public void onSmartWallAdClosed() {
+		Toast.makeText(MainActivity.this, "onSmartWallAdClosed", Toast.LENGTH_SHORT).show();
+		
+	}
+
+	@Override
+	public void onSmartWallAdShowing() {
+		Toast.makeText(MainActivity.this, "onSmartWallAdShowing", Toast.LENGTH_SHORT).show();
+		
+	}
+	@Override
+	public void onBackPressed() {
+		Toast.makeText(MainActivity.this, "onBackPressed", Toast.LENGTH_SHORT).show();
+	//Displaying Cached SmartWall Ad
+	try {
+	      air.showCachedAd(this, AdType.smartwall);
+	    } catch (Exception e) 
+	     {
+	      super.onBackPressed();
+	     }
+	}
+
 }
