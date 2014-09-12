@@ -16,7 +16,12 @@ import android.widget.TextView;
 
 public class CategoryAdapter extends BaseAdapter{
 
-	private int categoryIcons[]=new int[]{R.drawable.ic_love,R.drawable.ic_friendship,R.drawable.ic_birthday,R.drawable.ic_joke,R.drawable.ic_thought,R.drawable.ic_diwali,R.drawable.ic_diwali};
+	private int categoryIcons[] = new int[] { R.drawable.ic_love,
+			R.drawable.ic_friendship, R.drawable.ic_birthday,
+			R.drawable.ic_joke, R.drawable.ic_thought, R.drawable.ic_diwali,
+		R.drawable.ic_diwali,R.drawable.ic_christmas,R.drawable.ic_newyear, 
+		R.drawable.ic_holi,R.drawable.ic_rakhi,R.drawable.ic_facebook,R.drawable.ic_whatsapp	
+	};
 	private List<Category> mCategories=new ArrayList<Category>();
 	LayoutInflater mInflater;
 	public CategoryAdapter(Context context,List<Category> categories){

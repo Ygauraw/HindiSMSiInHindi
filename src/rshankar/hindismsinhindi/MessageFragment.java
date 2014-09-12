@@ -123,26 +123,28 @@ public class MessageFragment extends Fragment{
                 	 index=0;
                 	 finalmessage="";
                 	 if(checkedCount<message.length){
-                	 finalmessage+="\n******"+(index=index+1)+"******\n";
+                	 finalmessage+="\n******"+(checkedCount)+"******\n";
                 	 
-              		finalmessage+=message[checkedCount];
+              		 finalmessage+=message[position];
               		
                      mode.setTitle("One item selected");
                 	 }
                     
                      break;
                  default:
-                	 finalmessage+="\n******"+(index=index+1)+"******\n";
+                	
                 	 if(checkedCount<message.length){
-              		finalmessage+=message[checkedCount];
+                		 finalmessage+="\n******"+(checkedCount)+"******\n";
+                         finalmessage+=message[position];
               		mode.setTitle("" + checkedCount + " items selected");
                 	 }
-              		
+                	
                  	
 //                 	 Toast.makeText(getActivity(), "SIs" + count, Toast.LENGTH_SHORT).show();
                      
                      break;
              }
+            
          }
          
      }
