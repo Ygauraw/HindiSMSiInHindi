@@ -223,43 +223,49 @@ public class MainActivity extends Activity implements AdListener{
 
 	@Override
 	public void noAdAvailableListener() {
-	Toast.makeText(MainActivity.this, "noAdAvailableListener", Toast.LENGTH_SHORT).show();
+//	Toast.makeText(MainActivity.this, "noAdAvailableListener", Toast.LENGTH_SHORT).show();
 	
 		
 	}
 
 	@Override
 	public void onAdCached(AdType arg0) {
-		Toast.makeText(MainActivity.this, "onAdCached", Toast.LENGTH_SHORT).show();
+		try {
+		      air.showCachedAd(this, AdType.smartwall);
+		    } catch (Exception e) 
+		     {
+		      super.onBackPressed();
+		     }
+//		Toast.makeText(MainActivity.this, "onAdCached", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onAdError(String arg0) {
-		Toast.makeText(MainActivity.this, "onAdError", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(MainActivity.this, "onAdError", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onSDKIntegrationError(String arg0) {
-		Toast.makeText(MainActivity.this, "onSDKIntegrationError", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(MainActivity.this, "onSDKIntegrationError", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onSmartWallAdClosed() {
-		Toast.makeText(MainActivity.this, "onSmartWallAdClosed", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(MainActivity.this, "onSmartWallAdClosed", Toast.LENGTH_SHORT).show();
 		
 	}
 
 	@Override
 	public void onSmartWallAdShowing() {
-		Toast.makeText(MainActivity.this, "onSmartWallAdShowing", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(MainActivity.this, "onSmartWallAdShowing", Toast.LENGTH_SHORT).show();
 		
 	}
 	@Override
 	public void onBackPressed() {
-		Toast.makeText(MainActivity.this, "onBackPressed", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(MainActivity.this, "onBackPressed", Toast.LENGTH_SHORT).show();
 	//Displaying Cached SmartWall Ad
 	try {
 	      air.showCachedAd(this, AdType.smartwall);
