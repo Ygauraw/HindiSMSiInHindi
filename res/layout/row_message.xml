@@ -38,7 +38,10 @@
             android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
             android:paddingRight="?android:attr/listPreferredItemPaddingRight"
             android:textAppearance="?android:attr/textAppearanceListItemSmall"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:typeface="serif"
+            
+             />
     </LinearLayout>
 
 </LinearLayout>
