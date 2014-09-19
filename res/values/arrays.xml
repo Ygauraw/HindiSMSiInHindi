@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text size title -->
+    <string-array name="textsize_list_preference">
+        <item>Small</item>
+        <item>Normal</item>
+        <item>Large</item>
+        <item>Huge</item>
+    </string-array>
+
+    <!-- Text size value -->
+    <string-array name="textsize_values_list_preference">
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <!-- Text Color title -->
+    <string-array name="textcolor_list_preference">
+        <item>White</item>
+        <item>Yellow</item>
+        <item>Red</item>
+    </string-array>
+
+    <!-- Text size value -->
+    <string-array name="textcolor_values_list_preference">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Text Style title -->
+    <string-array name="textstyle_list_preference">
+        <item>Normal</item>
+        <item>Bold</item>
+        <item>Italic</item>
+        <item>Bold Italic</item>
+    </string-array>
+
+    <!-- Text Style value -->
+    <string-array name="textstyle_values_list_preference">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+     <!-- default value -->
+    <string-array name="multisellistpref_defvalues">
+        <item>item_1</item>
+        <item>item_2</item>
+        <item>item_3</item>
+        <item>item_4</item>
+        <item>item_5</item>
+        <item>item_6</item>
+        <item>item_7</item>
+        <item>item_8</item>
+        <item>item_9</item>
+        <item>item_10</item>
+        <item>item_11</item>
+        <item>item_12</item>
+        <item>item_13</item>
+        <item>item_14</item>
+    </string-array>
+
+    <!-- entry values -->
+    <string-array name="multisellistpref_entryValues">
+        <item>item_1</item>
+        <item>item_2</item>
+        <item>item_3</item>
+        <item>item_4</item>
+        <item>item_5</item>
+        <item>item_6</item>
+        <item>item_7</item>
+        <item>item_8</item>
+        <item>item_9</item>
+        <item>item_10</item>
+        <item>item_11</item>
+        <item>item_12</item>
+        <item>item_13</item>
+        <item>item_14</item>
+    </string-array>
+
+    <!-- entries -->
+    <string-array name="multisellistpref_entries">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+         <item>Item 5</item>
+        <item>Item 6</item>
+        
+    </string-array>
+</resources>

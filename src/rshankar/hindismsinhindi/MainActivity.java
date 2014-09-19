@@ -19,20 +19,21 @@ package rshankar.hindismsinhindi;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.yrkfgo.assxqx4.AdListener;
-import com.yrkfgo.assxqx4.MA;
-
 import rshankar.hindismsinhindi.dataclasses.Category;
 import rshankar.smsbook.adapters.CategoryAdapter;
 import rshankar.smsbook.database.MessageDBAdapter;
+import rshankar.smsbook.settings.HindiSMSInHindiSettings;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -41,9 +42,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.yrkfgo.assxqx4.AdListener;
+import com.yrkfgo.assxqx4.MA;
 
 public class MainActivity extends Activity implements AdListener{
+	private static final String TAG = "MainActivity";
+
+	private static final int RESULT_SETTINGS = 1;
+
 	public static SharedPreferences sharedpreferences;
 	public static final String SHARED_PREFERENCE_KEY="SMSBOOK_PREFERENCE";
 	public static MessageDBAdapter mDbHelper;
@@ -129,44 +136,12 @@ public class MainActivity extends Activity implements AdListener{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.splash, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    /* Called whenever we call invalidateOptionsMenu() */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
-//        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-//        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-         // The action bar home/up action should open or close the drawer.
-         // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-//        // Handle action buttons
-//        switch(item.getItemId()) {
-//        case R.id.action_websearch:
-//            // create intent to perform web search for this planet
-//            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-//            intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-//            // catch event that there's no activity to handle intent
-//            if (intent.resolveActivity(getPackageManager()) != null) {
-//                startActivity(intent);
-//            } else {
-//                Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
-//            }
-//            return true;
-//        default:
-//            return super.onOptionsItemSelected(item);
-//        }
-        return super.onOptionsItemSelected(item);
-    }
+   
+  
 
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -274,5 +249,68 @@ public class MainActivity extends Activity implements AdListener{
 	      super.onBackPressed();
 	     }
 	}
+
+
+	    /* Called whenever we call invalidateOptionsMenu() */
+	    @Override
+	    public boolean onPrepareOptionsMenu(Menu menu) {
+	        // If the nav drawer is open, hide action items related to the content view
+	        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+	        return super.onPrepareOptionsMenu(menu);
+	    }
+
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) {
+	    	  Intent intent;
+	         // The action bar home/up action should open or close the drawer.
+	         // ActionBarDrawerToggle will take care of this.
+	        if (mDrawerToggle.onOptionsItemSelected(item)) {
+	            return true;
+	        }
+	      
+	        
+	        switch(item.getItemId()) {
+	       
+	        case R.id.settings:
+	             intent = new Intent(MainActivity.this,HindiSMSInHindiSettings.class);
+	             startActivityForResult(intent, RESULT_SETTINGS);
+	           break;
+	          
+	        case R.id.rateapp:
+	        	intent = new Intent(Intent.ACTION_VIEW);
+	        	intent.setData(Uri.parse("market://details?id=rshankar.hindismsinhindi"));
+	        	startActivity(intent);
+	            break;
+	        case R.id.shareapp:
+	        	Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+				shareIntent.setType("text/plain");
+				shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Try It Once!!");
+				shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "market://details?id=rshankar.hindismsinhindi");
+				startActivity(Intent.createChooser(shareIntent, "Share via"));
+
+	            break;
+	        case R.id.moreapp:
+	        	intent = new Intent(Intent.ACTION_VIEW);
+	        	intent.setData(Uri.parse("market://search?q=pub:RShankar"));
+	        	startActivity(intent);
+	            break;
+	        case R.id.facebookpage:
+	          	intent = new Intent(Intent.ACTION_VIEW);
+	             intent.setData(Uri.parse("https://www.facebook.com/pages/Hindi-Sms-In-Hindi/355326774521023"));
+	            startActivity(intent);
+	            break;
+	        case R.id.exit:
+	        	intent = new Intent(Intent.ACTION_MAIN);
+	        	intent.addCategory(Intent.CATEGORY_HOME);
+	        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	        	startActivity(intent);
+	        	finish();
+	            break;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	        }
+			return true;
+	        
+	    }
 
 }

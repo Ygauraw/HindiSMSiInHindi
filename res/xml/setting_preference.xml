@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+        
+    <PreferenceCategory android:title="@string/titile_text_preference_category" >
+        
+         
+         <afzkl.development.colorpickerview.preference.ColorPickerPreference
+            android:defaultValue="0xFFFF7260"
+            android:key="color"
+            android:summary="@string/summery_textbackgroundcolor"
+            android:title="@string/title_style_background_color_preference" />
+        <ListPreference
+            android:defaultValue="@string/textsize_default_value"
+            android:dialogTitle="@string/title_textsize_list_preference_dialog"
+            android:entries="@array/textsize_list_preference"
+            android:entryValues="@array/textsize_values_list_preference"
+            android:key="textsize_list"
+            android:summary="@string/summery_textsize_list_preference_dialog"
+            android:title="@string/title_text_preference" />
+        <ListPreference
+            android:defaultValue="@string/textcolor_default_value"
+            android:dialogTitle="@string/title_textcolor_list_preference_dialog"
+            android:entries="@array/textcolor_list_preference"
+            android:entryValues="@array/textcolor_values_list_preference"
+            android:key="textcolor_list"
+            android:summary="@string/summery_textcolor_list_preference_dialog"
+            android:title="@string/title_text_color_preference" />
+        <ListPreference
+            android:defaultValue="@string/textstyle_default_value"
+            android:dialogTitle="@string/title_style_color_preference"
+            android:entries="@array/textstyle_list_preference"
+            android:entryValues="@array/textstyle_values_list_preference"
+            android:key="textstyle_list"
+            android:summary="@string/summery_textstyle_list_preference_dialog"
+            android:title="@string/title_style_color_preference" />
+    </PreferenceCategory>
+    
+     <PreferenceCategory android:title="@string/title_category_manage" >
+          <com.h6ah4i.android.compat.preference.MultiSelectListPreferenceCompat
+        android:defaultValue="@array/multisellistpref_defvalues"
+        android:entries="@array/multisellistpref_entries"
+        android:entryValues="@array/multisellistpref_entryValues"
+        android:key="@string/prefs_key_text"
+        android:summary="@string/prefs_summary_text"
+        android:title="@string/prefs_title_text" />
+     </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/cat_title_message_of_the_day" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="message_of_the_day"
+            android:selectable="true"
+            android:summaryOff="OFF"
+            android:summaryOn="ON"
+            android:title="@string/message_of_the_day" />
+
+     
+        <ListPreference
+            android:defaultValue="1"
+            android:dependency="message_of_the_day"
+            android:dialogTitle="@string/drawer_open"
+            android:key="category_list"
+            android:title="@string/drawer_close" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/titile_application_preference_category" >
+        <PreferenceScreen
+            android:summary="@string/summery_feedback_preference"
+            android:title="@string/title_feedback_preference" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:ravishankar.ahirwar@gmail.com?subject=[Hindi SMS In Hindi] Feedback" >
+                <extra
+                    android:name="android.intent.extra.TEXT"
+                    android:value="Please write you feedback" />
+            </intent>
+        </PreferenceScreen>
+
+        <rshankar.smsbook.settings.SMSBookDialogPreference
+            android:dialogIcon="@android:drawable/alert_dark_frame"
+            android:dialogMessage="1-: Totally new look and feel of SMS Book,\n
+           2-: Send multiple message in single click,\n
+3-: Enjoy Hindi SMS In Hindi sms in your own language.\n
+4-: Direct Whats-app sharing option.\n
+5-: More User friendly interface.\n
+6-: New Update get shortly by lot of new sms."
+            android:negativeButtonText=""
+            android:positiveButtonText="OK"
+            android:summary="@string/app_version"
+            android:title="@string/title_whatisnew_preference" />
+        <rshankar.smsbook.settings.SMSBookDialogPreference
+            android:dialogMessage="The Hindi SMS In Hindi is the gift for those who loves to do messaging and wants to remain in touch with their close ones. We know how important it is. We have a wide range of apps relating to this app => Sms Book-Hindi, SMS Book. we present each type and categorial messaging that accomplishes a wide spectrum of demands/needs Sms Book gives you a multiple options of sending or publishing your messages and thoughts to you friends and others. Enjoying sending sms...!!!"
+            android:negativeButtonText=""
+            android:summary="Some thing about Hindi SMS In Hindi"
+            android:title="@string/title_about_preference" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
