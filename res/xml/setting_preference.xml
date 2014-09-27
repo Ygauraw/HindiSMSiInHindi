@@ -8,10 +8,17 @@
          
          <afzkl.development.colorpickerview.preference.ColorPickerPreference
             android:defaultValue="0xFFFF7260"
-            android:key="color"
+            android:key="bgcolor"
             android:summary="@string/summery_textbackgroundcolor"
             android:title="@string/title_style_background_color_preference" />
-        <ListPreference
+       
+         <afzkl.development.colorpickerview.preference.ColorPickerPreference
+            android:defaultValue="0xFFFFFFFF"
+            android:key="textcolor"
+            android:summary="@string/summery_textcolor_list_preference_dialog"
+            android:title="@string/title_text_color_preference" />
+         
+          <ListPreference
             android:defaultValue="@string/textsize_default_value"
             android:dialogTitle="@string/title_textsize_list_preference_dialog"
             android:entries="@array/textsize_list_preference"
@@ -19,14 +26,15 @@
             android:key="textsize_list"
             android:summary="@string/summery_textsize_list_preference_dialog"
             android:title="@string/title_text_preference" />
-        <ListPreference
-            android:defaultValue="@string/textcolor_default_value"
-            android:dialogTitle="@string/title_textcolor_list_preference_dialog"
-            android:entries="@array/textcolor_list_preference"
-            android:entryValues="@array/textcolor_values_list_preference"
-            android:key="textcolor_list"
-            android:summary="@string/summery_textcolor_list_preference_dialog"
-            android:title="@string/title_text_color_preference" />
+          
+<!--         <ListPreference -->
+<!--             android:defaultValue="@string/textcolor_default_value" -->
+<!--             android:dialogTitle="@string/title_textcolor_list_preference_dialog" -->
+<!--             android:entries="@array/textcolor_list_preference" -->
+<!--             android:entryValues="@array/textcolor_values_list_preference" -->
+<!--             android:key="textcolor_list" -->
+<!--             android:summary="@string/summery_textcolor_list_preference_dialog" -->
+<!--             android:title="@string/title_text_color_preference" /> -->
         <ListPreference
             android:defaultValue="@string/textstyle_default_value"
             android:dialogTitle="@string/title_style_color_preference"

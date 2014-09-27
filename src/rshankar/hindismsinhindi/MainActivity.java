@@ -271,10 +271,10 @@ public class MainActivity extends Activity implements AdListener{
 	        
 	        switch(item.getItemId()) {
 	       
-	        case R.id.settings:
-	             intent = new Intent(MainActivity.this,HindiSMSInHindiSettings.class);
-	             startActivityForResult(intent, RESULT_SETTINGS);
-	           break;
+//	        case R.id.settings:
+//	             intent = new Intent(MainActivity.this,HindiSMSInHindiSettings.class);
+//	             startActivityForResult(intent, RESULT_SETTINGS);
+//	           break;
 	          
 	        case R.id.rateapp:
 	        	intent = new Intent(Intent.ACTION_VIEW);
