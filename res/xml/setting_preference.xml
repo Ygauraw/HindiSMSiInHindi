@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+     >
 
 
         
     <PreferenceCategory android:title="@string/titile_text_preference_category" >
         
-         
-         <afzkl.development.colorpickerview.preference.ColorPickerPreference
-            android:defaultValue="0xFFFF7260"
-            android:key="bgcolor"
-            android:summary="@string/summery_textbackgroundcolor"
-            android:title="@string/title_style_background_color_preference" />
-       
-         <afzkl.development.colorpickerview.preference.ColorPickerPreference
-            android:defaultValue="0xFFFFFFFF"
-            android:key="textcolor"
+           <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="txt_color"
+            android:defaultValue="0xffffffff"
+            app:supportsAlpha="false"
+            android:title="@string/title_text_color_preference"
             android:summary="@string/summery_textcolor_list_preference_dialog"
-            android:title="@string/title_text_color_preference" />
+            />
+           
+            <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="bg_color"
+            android:defaultValue="0xffff9900"
+            app:supportsAlpha="false"
+            android:title="@string/title_style_background_color_preference"
+            android:summary="@string/summery_textbackgroundcolor"
+            />
+
          
           <ListPreference
             android:defaultValue="@string/textsize_default_value"
@@ -27,14 +33,7 @@
             android:summary="@string/summery_textsize_list_preference_dialog"
             android:title="@string/title_text_preference" />
           
-<!--         <ListPreference -->
-<!--             android:defaultValue="@string/textcolor_default_value" -->
-<!--             android:dialogTitle="@string/title_textcolor_list_preference_dialog" -->
-<!--             android:entries="@array/textcolor_list_preference" -->
-<!--             android:entryValues="@array/textcolor_values_list_preference" -->
-<!--             android:key="textcolor_list" -->
-<!--             android:summary="@string/summery_textcolor_list_preference_dialog" -->
-<!--             android:title="@string/title_text_color_preference" /> -->
+
         <ListPreference
             android:defaultValue="@string/textstyle_default_value"
             android:dialogTitle="@string/title_style_color_preference"
@@ -43,35 +42,45 @@
             android:key="textstyle_list"
             android:summary="@string/summery_textstyle_list_preference_dialog"
             android:title="@string/title_style_color_preference" />
+        
+            <ListPreference
+            android:defaultValue="@string/seprator_default_value"
+            android:dialogTitle="@string/title_Multi_message_seprator"
+            android:entries="@array/seprator_preference_text"
+            android:entryValues="@array/seprator_preference_text_value"
+            android:key="seprator_list"
+            android:summary="@string/summary_set_seprator"
+            android:title="@string/title_Multi_message_seprator" />
+
     </PreferenceCategory>
     
-     <PreferenceCategory android:title="@string/title_category_manage" >
-          <com.h6ah4i.android.compat.preference.MultiSelectListPreferenceCompat
-        android:defaultValue="@array/multisellistpref_defvalues"
-        android:entries="@array/multisellistpref_entries"
-        android:entryValues="@array/multisellistpref_entryValues"
-        android:key="@string/prefs_key_text"
-        android:summary="@string/prefs_summary_text"
-        android:title="@string/prefs_title_text" />
-     </PreferenceCategory>
+<!--      <PreferenceCategory android:title="@string/title_category_manage" > -->
+<!--           <com.h6ah4i.android.compat.preference.MultiSelectListPreferenceCompat -->
+<!--         android:defaultValue="@array/multisellistpref_defvalues" -->
+<!--         android:entries="@array/multisellistpref_entries" -->
+<!--         android:entryValues="@array/multisellistpref_entryValues" -->
+<!--         android:key="@string/prefs_key_text" -->
+<!--         android:summary="@string/prefs_summary_text" -->
+<!--         android:title="@string/prefs_title_text" /> -->
+<!--      </PreferenceCategory> -->
     
-    <PreferenceCategory android:title="@string/cat_title_message_of_the_day" >
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="message_of_the_day"
-            android:selectable="true"
-            android:summaryOff="OFF"
-            android:summaryOn="ON"
-            android:title="@string/message_of_the_day" />
+<!--     <PreferenceCategory android:title="@string/cat_title_message_of_the_day" > -->
+<!--         <CheckBoxPreference -->
+<!--             android:defaultValue="true" -->
+<!--             android:key="message_of_the_day" -->
+<!--             android:selectable="true" -->
+<!--             android:summaryOff="OFF" -->
+<!--             android:summaryOn="ON" -->
+<!--             android:title="@string/message_of_the_day" /> -->
 
      
-        <ListPreference
-            android:defaultValue="1"
-            android:dependency="message_of_the_day"
-            android:dialogTitle="@string/drawer_open"
-            android:key="category_list"
-            android:title="@string/drawer_close" />
-    </PreferenceCategory>
+<!--         <ListPreference -->
+<!--             android:defaultValue="1" -->
+<!--             android:dependency="message_of_the_day" -->
+<!--             android:dialogTitle="@string/drawer_open" -->
+<!--             android:key="category_list" -->
+<!--             android:title="@string/drawer_close" /> -->
+<!--     </PreferenceCategory> -->
     <PreferenceCategory android:title="@string/titile_application_preference_category" >
         <PreferenceScreen
             android:summary="@string/summery_feedback_preference"

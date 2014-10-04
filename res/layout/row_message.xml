@@ -7,12 +7,14 @@
     android:orientation="vertical" >
 
     <LinearLayout
+         android:id="@+id/messageTextBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:focusable="false"
-         android:background="@drawable/roundedcorner"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+  		android:background="@color/text_background"
+         >
 
         <!-- <com.google.android.gms.ads.AdView -->
         <!-- android:id="@+id/adView" -->
