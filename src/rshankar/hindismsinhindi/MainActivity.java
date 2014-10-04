@@ -23,17 +23,19 @@ import rshankar.hindismsinhindi.dataclasses.Category;
 import rshankar.smsbook.adapters.CategoryAdapter;
 import rshankar.smsbook.database.MessageDBAdapter;
 import rshankar.smsbook.settings.HindiSMSInHindiSettings;
+import rshankar.smsbook.settings.StaticMethodVeriable;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -64,11 +66,12 @@ public class MainActivity extends Activity implements AdListener{
     private String[] mPlanetTitles;
     public static List<Category> mCategories=new ArrayList<Category>();
     private static MA air;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+       
         
         if(air==null)
         	air=new MA(this, this, false);
@@ -78,6 +81,16 @@ public class MainActivity extends Activity implements AdListener{
         
         	
         sharedpreferences=getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE);
+        if(!MainActivity.sharedpreferences.contains("txt_color")){
+        Editor editor = MainActivity.sharedpreferences.edit();
+    	editor.putInt("txt_color", StaticMethodVeriable.TextColor);
+    	editor.putInt("bg_color", StaticMethodVeriable.TextBACKGROUNDColor);
+    	editor.putInt("textsize_list", 20);
+    	editor.putInt("textstyle_list",Typeface.NORMAL);
+    	editor.putString("seprator_list","*****(1)*****");
+    	editor.commit();
+        }
+    	
      	mDbHelper = new MessageDBAdapter(this);
    		mDbHelper.createDatabase();
    		mDbHelper.open();
@@ -104,7 +117,7 @@ public class MainActivity extends Activity implements AdListener{
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-
+        getActionBar().setDisplayUseLogoEnabled(false);
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -271,10 +284,10 @@ public class MainActivity extends Activity implements AdListener{
 	        
 	        switch(item.getItemId()) {
 	       
-//	        case R.id.settings:
-//	             intent = new Intent(MainActivity.this,HindiSMSInHindiSettings.class);
-//	             startActivityForResult(intent, RESULT_SETTINGS);
-//	           break;
+	        case R.id.settings:
+	             intent = new Intent(MainActivity.this,HindiSMSInHindiSettings.class);
+	             startActivityForResult(intent, RESULT_SETTINGS);
+	           break;
 	          
 	        case R.id.rateapp:
 	        	intent = new Intent(Intent.ACTION_VIEW);

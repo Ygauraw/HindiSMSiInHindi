@@ -27,6 +27,7 @@ public class MessageFragment extends Fragment{
 	AdView mAdView;
 	 public static final String ARG_PLANET_NUMBER = "planet_number";
 	 ListView messageList;
+	 String messageSeprator="*****(1)*****";
      public MessageFragment() {
     	 MainActivity.mDbHelper.open();
     	
@@ -51,7 +52,7 @@ public class MessageFragment extends Fragment{
 //       messageList.setAdapter( new ArrayAdapter<String>(getActivity(),
 //               R.layout.listrow_sms, message));
                
-       messageList.setAdapter( new MessageAdapter(getActivity(), 0, message));
+    
        
        mAdView.setAdListener(new AdListener() {
     	   @Override
@@ -65,6 +66,12 @@ public class MessageFragment extends Fragment{
 //         getActivity().setTitle(title);
          return rootView;
      }
+     @Override
+    public void onResume() {
+    	super.onResume();
+    	   messageList.setAdapter( new MessageAdapter(getActivity(), 0, message));
+    	   messageSeprator=MainActivity.sharedpreferences.getString("seprator_list","*****(1)*****");
+    }
      
      @TargetApi(Build.VERSION_CODES.HONEYCOMB)
  	private class ModeCallback implements ListView.MultiChoiceModeListener {
@@ -123,7 +130,8 @@ public class MessageFragment extends Fragment{
                 	 index=0;
                 	 finalmessage="";
                 	 if(checkedCount<message.length){
-                	 finalmessage+="\n******"+(checkedCount)+"******\n";
+                	String temp=messageSeprator;
+                	 finalmessage+="\n"+ messageSeprator.substring(0,6)+checkedCount+messageSeprator.substring(7)+"\n";
                 	 
               		 finalmessage+=message[position];
               		
@@ -134,7 +142,7 @@ public class MessageFragment extends Fragment{
                  default:
                 	
                 	 if(checkedCount<message.length){
-                		 finalmessage+="\n******"+(checkedCount)+"******\n";
+                		 finalmessage+="\n"+ messageSeprator.substring(0,6)+checkedCount+messageSeprator.substring(7)+"\n";
                          finalmessage+=message[position];
               		mode.setTitle("" + checkedCount + " items selected");
                 	 }

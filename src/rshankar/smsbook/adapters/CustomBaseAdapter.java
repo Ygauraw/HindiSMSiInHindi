@@ -3,6 +3,7 @@ package rshankar.smsbook.adapters;
 import java.util.Locale;
 
 import rshankar.hindismsinhindi.R;
+import rshankar.smsbook.settings.StaticMethodVeriable;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -119,6 +120,7 @@ TextToSpeech.OnInitListener{
 			Bitmap smiley = BitmapFactory.decodeResource(contextMain.getResources(), emojiLove[0]);
 			ssb.setSpan( new ImageSpan( smiley ), 0,1, Spannable.SPAN_INCLUSIVE_INCLUSIVE );
 			holder.txtTitle.setText( ssb, BufferType.SPANNABLE );
+			holder.txtTitle.setTextColor(StaticMethodVeriable.TextBACKGROUNDColor);
 		 }else{
 				holder.txtTitle.setText(this.values[position] );
 		 }
