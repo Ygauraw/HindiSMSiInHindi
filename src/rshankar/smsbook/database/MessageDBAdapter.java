@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import rshankar.hindismsinhindi.dataclasses.Category;
+import rshankar.hindismsinhindi.dataclasses.MainCategory;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,14 +24,20 @@ private final Context mContext;
 private SQLiteDatabase mDb;
 private DataBaseHelper mDbHelper;
 
+
+
 private static final String MESSAGE_TABLE = "messages";
 private static final String CATEGORY_TABLE = "categories";
+private static final String MAIN_CATEGORY_TABLE = "maincategories";
 private static final String LANGUAGE_TABLE = "language";
 private static final String MASTER_MESSAGE_TABLE = "message_master";
 private static final String MASTER_CATEGORY_TABLE = "caterory_master";
 
 private static final String CATEGORY_ID = "categoryId";
 private static final String CATEGORY_NAME = "categoryName";
+
+private static final String MAIN_CATEGORY_ID = "maincategory_id";
+private static final String MAIN_CATEGORY_NAME = "maincategory_name";
 
 private static final String MESSAGE_ID = "messageId";
 private static final String MESSAGE = "message";
@@ -232,6 +239,47 @@ public int getMessageCount()
 
 		 String temp=mCursor.getString(mCursor.getColumnIndex("message_text"));
 		  return temp;
+	}
+	public List<Category> retriveCategoriesByMainCategoryId(int MainCategoryId){
+		List<Category> subCategoriesList=new ArrayList<Category>();
+		Category subCategory;
+		Cursor mCursor = mDb.query(CATEGORY_TABLE, new String[] {CATEGORY_ID,CATEGORY_NAME}, MAIN_CATEGORY_ID+"="+MainCategoryId , null, null, null, null);
+		  mCursor.moveToFirst();
+		  for(int i=0;i<mCursor.getCount();i++){
+			  subCategory=new Category(mCursor.getInt(mCursor.getColumnIndex(CATEGORY_ID)),mCursor.getString(mCursor.getColumnIndex(CATEGORY_NAME)));
+			  subCategoriesList.add(subCategory);
+		  mCursor.moveToNext();
+		  }
+		  
+		  mCursor.close();
+		  return subCategoriesList;
+	}
+		
+	public List<Category> retriveAllMainCategory(){
+		List<Category> tempCategories=new ArrayList<Category>();
+		Category tempCategory;
+		Cursor mCursor = mDb.query(MAIN_CATEGORY_TABLE, new String[] {}, null , null, null, null, null);
+		  mCursor.moveToFirst();
+		  for(int i=0;i<mCursor.getCount();i++){
+			  tempCategory=new Category(mCursor.getInt(mCursor.getColumnIndex(MAIN_CATEGORY_ID)),mCursor.getString(mCursor.getColumnIndex(MAIN_CATEGORY_NAME)));
+			  tempCategories.add(tempCategory);
+		  mCursor.moveToNext();
+		  }
+		  mCursor.close();
+		  return tempCategories;
+	}
+	
+	public List<MainCategory> getAllMainCategoryWithSubCategory(){
+		List<MainCategory> allMainCategoryList=new ArrayList<MainCategory>();
+		MainCategory tempMainCategory = null;
+		List<Category> tempMainCategoryList=retriveAllMainCategory();
+		for(int i=0;i<tempMainCategoryList.size();i++){
+			tempMainCategory=new MainCategory(tempMainCategoryList.get(i).getCategoryId(), tempMainCategoryList.get(i).getCategoryName());
+			tempMainCategory.mSubCategoryList=retriveCategoriesByMainCategoryId(tempMainCategoryList.get(i).getCategoryId());
+			allMainCategoryList.add(tempMainCategory);
+		  }
+		
+		 return allMainCategoryList;
 	}
 
 }

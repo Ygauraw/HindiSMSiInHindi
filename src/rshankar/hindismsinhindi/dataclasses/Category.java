@@ -4,6 +4,10 @@ public class Category {
 public int categoryId;
 public String categoryName;
 
+public Category() {
+	
+}
+
 public Category(int categoryId,String categoryName) {
 	this.categoryId=categoryId;
 	this.categoryName=categoryName;

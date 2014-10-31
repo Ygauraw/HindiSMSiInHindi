@@ -17,11 +17,12 @@ public class MessageAdapter extends ArrayAdapter<String> {
 	ViewHolder mViewHolder;
 	LayoutInflater mInflater;
 	public static final String SHARED_PREFERENCE_KEY="SMSBOOK_PREFERENCE";
-	
+	Typeface custom_font;
 	public MessageAdapter(Context context, int resource, String[] objects) {
 		super(context, 0, objects);
 		mInflater = LayoutInflater.from(context);
-     
+		custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Thin.ttf");
+
 	}
 
 	@Override
@@ -31,6 +32,7 @@ public class MessageAdapter extends ArrayAdapter<String> {
 			mViewHolder=new ViewHolder();
 			convertView=mInflater.inflate(R.layout.row_message, null);
 		    mViewHolder.mMessage=(TextView)convertView.findViewById(R.id.messageText);
+		    mViewHolder.mMessage.setTypeface(custom_font);
 		    mViewHolder.messageTextBackground=(LinearLayout)convertView.findViewById(R.id.messageTextBackground);
 		    int bg_color=MainActivity.sharedpreferences.getInt("bg_color",Color.RED);
 			mViewHolder.messageTextBackground.setBackgroundColor(bg_color);

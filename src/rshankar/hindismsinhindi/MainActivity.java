@@ -19,7 +19,8 @@ package rshankar.hindismsinhindi;
 import java.util.ArrayList;
 import java.util.List;
 
-import rshankar.hindismsinhindi.dataclasses.Category;
+import rshankar.hindismsinhindi.dataclasses.LeftPannelDataClass;
+import rshankar.hindismsinhindi.dataclasses.MainCategory;
 import rshankar.smsbook.adapters.CategoryAdapter;
 import rshankar.smsbook.database.MessageDBAdapter;
 import rshankar.smsbook.settings.HindiSMSInHindiSettings;
@@ -63,15 +64,15 @@ public class MainActivity extends Activity implements AdListener{
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private String[] mPlanetTitles;
-    public static List<Category> mCategories=new ArrayList<Category>();
+    private String[] mPlanetTitles=new String[100];;
+    public static List<MainCategory> mCategories=new ArrayList<MainCategory>();
+	private List<LeftPannelDataClass> mLeftPannelDataList=new ArrayList<LeftPannelDataClass>() ;
+
     private static MA air;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-       
         
         if(air==null)
         	air=new MA(this, this, false);
@@ -96,12 +97,31 @@ public class MainActivity extends Activity implements AdListener{
    		mDbHelper.open();
    		
    		mCategories.clear();
-  		mCategories=mDbHelper.retriveAllCategory();
-  		mPlanetTitles=new String[mCategories.size()];
-  		for(int i=0;i<mCategories.size();i++)
-  			{
-  			mPlanetTitles[i]=mCategories.get(i).getCategoryName();
-  			}
+  		mCategories=mDbHelper.getAllMainCategoryWithSubCategory();
+  		
+  		LeftPannelDataClass tLeftPannelData;
+		for(int i=0;i<mCategories.size();i++){
+			tLeftPannelData=new LeftPannelDataClass();
+			tLeftPannelData.categoryName=mCategories.get(i).getCategoryName();
+			tLeftPannelData.categoryID=mCategories.get(i).getCategoryId();
+			tLeftPannelData.tag=0;
+			mPlanetTitles[i]=mCategories.get(i).getCategoryName().toString();
+			mLeftPannelDataList.add(tLeftPannelData);
+			for(int j=0;j<mCategories.get(i).mSubCategoryList.size();j++){
+				tLeftPannelData=new LeftPannelDataClass();
+				tLeftPannelData.categoryName=mCategories.get(i).mSubCategoryList.get(j).getCategoryName();
+				tLeftPannelData.categoryID=mCategories.get(i).mSubCategoryList.get(j).getCategoryId();
+				tLeftPannelData.tag=1;
+				mPlanetTitles[i]=mCategories.get(i).mSubCategoryList.get(j).getCategoryName();
+				mLeftPannelDataList.add(tLeftPannelData);
+			}
+		}
+		
+//  		
+//  		for(int i=0;i<mCategories.size();i++)
+//  			{
+//  			mPlanetTitles[i]=mCategories.get(i).getCategoryName();
+//  			}
   			
 
         mTitle = mDrawerTitle = getTitle();
@@ -112,7 +132,7 @@ public class MainActivity extends Activity implements AdListener{
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new CategoryAdapter(this,mCategories));
+        mDrawerList.setAdapter(new CategoryAdapter(this,mLeftPannelDataList));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -120,8 +140,7 @@ public class MainActivity extends Activity implements AdListener{
         getActionBar().setDisplayUseLogoEnabled(false);
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
+        mDrawerToggle = new ActionBarDrawerToggle(             this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
                 R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
@@ -170,8 +189,8 @@ public class MainActivity extends Activity implements AdListener{
         Fragment fragment = new MessageFragment();
         Bundle args = new Bundle();
         args.putInt(MessageFragment.ARG_PLANET_NUMBER, position);
-        args.putString("title", mCategories.get(position).getCategoryName());
-        args.putInt("catId", mCategories.get(position).getCategoryId());
+        args.putString("title", mLeftPannelDataList.get(position).categoryName);
+        args.putInt("catId", mLeftPannelDataList.get(position).categoryID);
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -179,7 +198,7 @@ public class MainActivity extends Activity implements AdListener{
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+//      setTitle(mPlanetTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
