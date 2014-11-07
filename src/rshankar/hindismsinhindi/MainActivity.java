@@ -179,7 +179,12 @@ public class MainActivity extends Activity implements AdListener{
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+        	try{
+        	if(mLeftPannelDataList.get(position).tag!=0)
+             selectItem(position);
+        	}catch(Exception e){
+        		e.printStackTrace();
+        	}
             
         }
     }
@@ -198,7 +203,8 @@ public class MainActivity extends Activity implements AdListener{
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-//      setTitle(mPlanetTitles[position]);
+        setTitle(mLeftPannelDataList.get(position).categoryName);
+      
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 

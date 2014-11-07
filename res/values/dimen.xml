@@ -11,7 +11,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-     <dimen name="splash_text_font">90sp</dimen>
+     <dimen name="splash_text_font">70sp</dimen>
      
      <dimen name="text_size_normal">10sp</dimen>
      <dimen name="text_size_small">15sp</dimen>
