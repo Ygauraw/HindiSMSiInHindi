@@ -4,25 +4,18 @@ import java.util.Set;
 
 import rshankar.hindismsinhindi.MainActivity;
 import rshankar.hindismsinhindi.R;
-import rshankar.hindismsinhindi.dataclasses.Category;
-import yuku.ambilwarna.widget.AmbilWarnaPreference;
-import afzkl.development.colorpickerview.view.ColorPickerView;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.h6ah4i.android.compat.preference.MultiSelectListPreferenceCompat;
 

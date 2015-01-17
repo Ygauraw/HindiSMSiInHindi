@@ -46,12 +46,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.yrkfgo.assxqx4.AdListener;
-import com.yrkfgo.assxqx4.MA;
 
-public class MainActivity extends Activity implements AdListener{
+public class MainActivity extends Activity{
 	private static final String TAG = "MainActivity";
-
 	private static final int RESULT_SETTINGS = 1;
 
 	public static SharedPreferences sharedpreferences;
@@ -68,18 +65,12 @@ public class MainActivity extends Activity implements AdListener{
     public static List<MainCategory> mCategories=new ArrayList<MainCategory>();
 	private List<LeftPannelDataClass> mLeftPannelDataList=new ArrayList<LeftPannelDataClass>() ;
 
-    private static MA air;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        if(air==null)
-        	air=new MA(this, this, false);
-       //Caching Smartwall Ad. 
-        air.callSmartWallAd();
-        air.call360Ad(this, 0, true, null);
-        
+             
         	
         sharedpreferences=getSharedPreferences(SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE);
         if(!MainActivity.sharedpreferences.contains("txt_color")){
@@ -117,12 +108,7 @@ public class MainActivity extends Activity implements AdListener{
 			}
 		}
 		
-//  		
-//  		for(int i=0;i<mCategories.size();i++)
-//  			{
-//  			mPlanetTitles[i]=mCategories.get(i).getCategoryName();
-//  			}
-  			
+
 
         mTitle = mDrawerTitle = getTitle();
 //        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
@@ -234,62 +220,7 @@ public class MainActivity extends Activity implements AdListener{
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-	@Override
-	public void noAdAvailableListener() {
-//	Toast.makeText(MainActivity.this, "noAdAvailableListener", Toast.LENGTH_SHORT).show();
-	
-		
-	}
-
-	@Override
-	public void onAdCached(AdType arg0) {
-		try {
-		      air.showCachedAd(this, AdType.smartwall);
-		    } catch (Exception e) 
-		     {
-		      super.onBackPressed();
-		     }
-//		Toast.makeText(MainActivity.this, "onAdCached", Toast.LENGTH_SHORT).show();
-		
-	}
-
-	@Override
-	public void onAdError(String arg0) {
-//		Toast.makeText(MainActivity.this, "onAdError", Toast.LENGTH_SHORT).show();
-		
-	}
-
-	@Override
-	public void onSDKIntegrationError(String arg0) {
-//		Toast.makeText(MainActivity.this, "onSDKIntegrationError", Toast.LENGTH_SHORT).show();
-		
-	}
-
-	@Override
-	public void onSmartWallAdClosed() {
-//		Toast.makeText(MainActivity.this, "onSmartWallAdClosed", Toast.LENGTH_SHORT).show();
-		
-	}
-
-	@Override
-	public void onSmartWallAdShowing() {
-//		Toast.makeText(MainActivity.this, "onSmartWallAdShowing", Toast.LENGTH_SHORT).show();
-		
-	}
-	@Override
-	public void onBackPressed() {
-//		Toast.makeText(MainActivity.this, "onBackPressed", Toast.LENGTH_SHORT).show();
-	//Displaying Cached SmartWall Ad
-	try {
-	      air.showCachedAd(this, AdType.smartwall);
-	    } catch (Exception e) 
-	     {
-	      super.onBackPressed();
-	     }
-	}
-
-
-	    /* Called whenever we call invalidateOptionsMenu() */
+		    /* Called whenever we call invalidateOptionsMenu() */
 	    @Override
 	    public boolean onPrepareOptionsMenu(Menu menu) {
 	        // If the nav drawer is open, hide action items related to the content view

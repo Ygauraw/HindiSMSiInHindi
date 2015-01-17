@@ -31,8 +31,7 @@ public class SplashActivity extends Activity {
 			@Override
 			public void run() {
 
-				Intent intent = new Intent(SplashActivity.this,
-						MainActivity.class);
+				Intent intent = new Intent(SplashActivity.this,	rshankar.hindismsinhindi.MainActivity.class);
 				startActivity(intent);
 
 				SplashActivity.this.finish();

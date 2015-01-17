@@ -10,10 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdView;
 
 public class MessageAdapter extends ArrayAdapter<String> {
-	AdView mAdView;
 	ViewHolder mViewHolder;
 	LayoutInflater mInflater;
 	public static final String SHARED_PREFERENCE_KEY="SMSBOOK_PREFERENCE";
