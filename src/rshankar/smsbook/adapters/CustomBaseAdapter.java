@@ -3,6 +3,7 @@ package rshankar.smsbook.adapters;
 import java.util.Locale;
 
 import rshankar.hindismsinhindi.R;
+import rshankar.smsbook.settings.StaticMethodVeriable;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -86,15 +87,13 @@ TextToSpeech.OnInitListener{
         		 holder = new ViewHolder();
         		 
         	
-                 holder.txtTitle = (TextView) convertView.findViewById(R.id.sms);
-                 holder.optionRow = (LinearLayout) convertView.findViewById(R.id.optionRow);
-                 holder.message = (TextView) convertView.findViewById(R.id.message);
-                 holder.facebook = (TextView) convertView.findViewById(R.id.facebook);
-                 holder.email = (TextView) convertView.findViewById(R.id.email);
-                 holder.whatsapp = (TextView) convertView.findViewById(R.id.whatsapp);
-                 holder.share = (TextView) convertView.findViewById(R.id.share);
-                 holder.copy = (TextView) convertView.findViewById(R.id.copy);
-                 holder.speak= (TextView) convertView.findViewById(R.id.speak);
+//                 holder.txtTitle = (TextView) convertView.findViewById(R.id.sms);
+//                 holder.optionRow = (LinearLayout) convertView.findViewById(R.id.optionRow);
+//                 holder.message = (TextView) convertView.findViewById(R.id.message);
+//                 holder.email = (TextView) convertView.findViewById(R.id.email);
+//                 holder.whatsapp = (TextView) convertView.findViewById(R.id.whatsapp);
+//                 holder.share = (TextView) convertView.findViewById(R.id.share);
+//                 holder.copy = (TextView) convertView.findViewById(R.id.copy);
                  
                  convertView.setTag(holder);
         	 
@@ -121,16 +120,12 @@ TextToSpeech.OnInitListener{
 			Bitmap smiley = BitmapFactory.decodeResource(contextMain.getResources(), emojiLove[0]);
 			ssb.setSpan( new ImageSpan( smiley ), 0,1, Spannable.SPAN_INCLUSIVE_INCLUSIVE );
 			holder.txtTitle.setText( ssb, BufferType.SPANNABLE );
+			holder.txtTitle.setTextColor(StaticMethodVeriable.TextBACKGROUNDColor);
 		 }else{
 				holder.txtTitle.setText(this.values[position] );
 		 }
  
-		 holder.speak.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					speakOut(values[position]);
-				}
-			});
+
 		 
         holder.message.setOnClickListener(new OnClickListener() {
 			@Override

@@ -1,0 +1,109 @@
+<!--
+  Copyright 2013 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name">हिंदी मैसेजिंग</string>
+    <string name="splash_text">नमस्ते</string>
+    <string name="ad_unit_id">ca-app-pub-6809957338111953/7393020597</string>
+    <string name="drawer_open">Categories</string>
+    <string name="drawer_close">Categories</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    
+    <string name="cancelled">Cancelled</string>
+    <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
+    <string name="ok">OK</string>
+    <string name="hello_user">Hello %1$s!</string>
+    <string name="success">Success</string>
+    <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
+    <string name="error">Error</string>
+    <string name="status_update">Updating status for %1$s at %2$s</string>
+    <string name="photo_post">Photo Post</string>
+    <string name="you_picked">You picked:</string>
+    <string name="no_friends_selected">&lt;No friends selected&gt;</string>
+    <string name="no_place_selected">&lt;No place selected&gt;</string>
+    <string name="pick_seattle_place">Pick a Seattle Place</string>
+    <string name="exception">Exception: %1$s</string>
+    
+   
+    
+        <string name="titile_text_preference_category">Custom View</string> 
+  <string name="title_text_preference">Text Size</string> 
+  <string name="title_text_color_preference">Text Color</string>
+  <string name="title_style_color_preference">Text Style</string>
+   <string name="title_style_background_color_preference">Background Color</string>
+  
+    <string name="title_style_categories">Show/Hide Categories</string>
+     <string name="summery_show_hide_categories">Choose category for display</string>
+      <string name="title_category_manage">Manage category</string>
+      
+  <string name="title_textsize_list_preference_dialog">Select Text Size</string> 
+  <string name="title_textcolor_list_preference_dialog">Select Text Color</string>
+  <string name="summery_textsize_list_preference_dialog">Set the text Size</string> 
+  <string name="summery_textcolor_list_preference_dialog">Set the text Color</string>
+  <string name="summery_textstyle_list_preference_dialog">Set the text Style</string>
+   <string name="summery_textbackgroundcolor">Set background Color</string>
+  <string name="summery_text_preference">Choose</string> 
+  <string name="textsize_default_value">20</string> 
+  <string name="textcolor_default_value">0</string> 
+  <string name="textstyle_default_value">0</string>
+  
+   <string name="seprator_default_value">1</string>
+   <string name="title_Multi_message_seprator">Multi Message Seprator</string>
+   <string name="summary_set_seprator">Select seprator for multi message select.</string>
+   
+  <string name="action_settings">Settings</string> 
+  <string name="action_rate_app">Rate App</string> 
+  <string name="action_share_app">Share APP</string> 
+  <string name="action_more_app">More App</string> 
+  <string name="action_facebook_page">Facebook Page</string>
+  <string name="action_exit">Exit</string>  
+  <string name="titile_application_preference_category">Application</string> 
+  <string name="title_feedback_preference">Feedback</string> 
+  <string name="summery_feedback_preference">Let me know how to improve this application ?</string> 
+  <string name="title_noofsms_preference">Number Of SMS</string> 
+  <string name="summery_noofsms_preference">Total number of messages in the application=1000</string> 
+  <string name="title_whatisnew_preference">What\'s is New ?</string> 
+  <string name="title_about_preference">About</string>
+  
+  <string name="app_version">Version 1.9</string>
+   
+<!--   exit alert dialog strings -->
+<string name="exit_alert_message">Are you sure you want to exit?</string>
+<string name="exit_alert_title">Rate SMS Book!!</string>
+<string name="never_show_again">Don\'t show again.</string>
+<string name="exit">Exit</string>
+<string name="cancel">Cancel</string>
+<string name="rate_us">Rate us</string>
+<string name="rate_us_message">If you enjoy using Hindi Messiging, please take a few seconds to rate us. Thanks for your supports!</string>
+  
+<!--   Message of the day Setting -->
+
+<string name="cat_title_message_of_the_day">Message Of the day</string>
+<string name="summery_default_cat_message_of_the_day">Love</string>
+
+<string name="lang_title_message_of_the_day">Language</string>
+<string name="summery_default_lang_message_of_the_day">English</string>
+
+<string name="time">Time</string>
+<string name="cycle">Cycle</string>
+
+<string name="message_of_the_day">Message Of the day</string>
+<string name="summary_message_of_the_day">Message Of the day : ON</string>
+<!-- <string name=""></string> -->
+<!-- <string name=""></string> -->
+
+</resources>

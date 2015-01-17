@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@id/settings"
+        android:orderInCategory="0"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_settings"
+        android:showAsAction="always"
+        />
+<!--   <item -->
+<!--         android:id="@id/feedback" -->
+<!--         android:orderInCategory="1" -->
+<!--         android:title="@string/title_feedback_preference"/> -->
+    <item
+        android:id="@id/rateapp"
+        android:orderInCategory="2"
+        android:title="@string/action_rate_app"
+        />
+    <item
+        android:id="@id/shareapp"
+        android:orderInCategory="3"
+        android:title="@string/action_share_app"
+        />
+    <item
+        android:id="@id/moreapp"
+        android:orderInCategory="4"
+        android:title="@string/action_more_app"
+        />
+    <item
+        android:id="@id/facebookpage"
+        android:orderInCategory="5"
+        android:title="@string/action_facebook_page"
+        />
+
+    <item
+        android:id="@id/exit"
+        android:orderInCategory="5"
+        android:title="@string/action_exit"
+        />
+    
+</menu>
