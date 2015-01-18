@@ -16,14 +16,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 
 public class MessageFragment extends Fragment{
 	String message[];
 	String finalmessage="";
-	 AdView mAdView;
 	 public static final String ARG_PLANET_NUMBER = "planet_number";
 	 ListView messageList;
 	 String messageSeprator="*****(1)*****";
@@ -32,13 +28,7 @@ public class MessageFragment extends Fragment{
     	
      }
     
-     @Override
-     public void onActivityCreated(Bundle bundle) {
-         super.onActivityCreated(bundle);
-         mAdView   = (AdView) getView().findViewById(R.id.adView);
-         AdRequest adRequest = new AdRequest.Builder().build();
-         mAdView.loadAd(adRequest);
-     }
+     
 
      @Override
      public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,9 +56,6 @@ public class MessageFragment extends Fragment{
      @Override
     public void onResume() {
     	super.onResume();
-    	 if (mAdView != null) {
-    		 mAdView.resume();
-         }
     	   messageList.setAdapter( new MessageAdapter(getActivity(), 0, message));
     	   messageSeprator=MainActivity.sharedpreferences.getString("seprator_list","*****(1)*****");
     }
@@ -157,24 +144,6 @@ public class MessageFragment extends Fragment{
          
      }
 
-     /** Called when leaving the activity */
-     @Override
-     public void onPause() {
-         if (mAdView != null) {
-             mAdView.pause();
-         }
-         super.onPause();
-     }
-
      
-
-     /** Called before the activity is destroyed */
-     @Override
-     public void onDestroy() {
-         if (mAdView != null) {
-             mAdView.destroy();
-         }
-         super.onDestroy();
-     }
  }
 
