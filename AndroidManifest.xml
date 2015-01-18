@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="rshankar.hindismsinhindi"
-    android:versionCode="17"
-    android:versionName="2.3" >
+    android:versionCode="18"
+    android:versionName="2.4" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="9"
         android:targetSdkVersion="21" />
+    
+    <supports-screens android:resizeable="true"
+              android:smallScreens="true"
+              android:normalScreens="true"
+              android:largeScreens="true"
+              android:xlargeScreens="true"
+              android:anyDensity="true" />
 
     <application
         android:icon="@drawable/ic_launcher"

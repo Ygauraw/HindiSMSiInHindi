@@ -15,8 +15,16 @@
   -->
 
 <resources>
-    <string name="app_name">हिंदी मैसेजिंग</string>
-    <string name="splash_text">नमस्ते</string>
+    <string name="app_name">हिंदी मैसेज</string>
+    <string name="splash_text">नमस्ते !</string>
+    
+    
+    
+    <string name="good_morning">सुप्रभात \n हिंदी मैसेज में\n आपका स्वागत हैं।</string>
+    <string name="good_afternoon">शुभ दिन \n हिंदी मैसेज में\n आपका स्वागत हैं।</string>
+    <string name="good_evening">शुभ संध्या \n हिंदी मैसेज में\n आपका स्वागत हैं।</string>
+    
+    
     <string name="banner_ad_unit_id">ca-app-pub-6809957338111953/7393020597</string>
     <string name="drawer_open">Categories</string>
     <string name="drawer_close">Categories</string>
@@ -79,16 +87,16 @@
   <string name="title_whatisnew_preference">What\'s is New ?</string> 
   <string name="title_about_preference">About</string>
   
-  <string name="app_version">Version 1.9</string>
+  <string name="app_version">Version 2.4</string>
    
 <!--   exit alert dialog strings -->
 <string name="exit_alert_message">Are you sure you want to exit?</string>
-<string name="exit_alert_title">Rate SMS Book!!</string>
+<string name="exit_alert_title">Rate हिंदी मैसेज!!</string>
 <string name="never_show_again">Don\'t show again.</string>
 <string name="exit">Exit</string>
 <string name="cancel">Cancel</string>
 <string name="rate_us">Rate us</string>
-<string name="rate_us_message">If you enjoy using Hindi Messiging, please take a few seconds to rate us. Thanks for your supports!</string>
+<string name="rate_us_message">If you enjoy using Hindi Message, please take a few seconds to rate us. Thanks for your supports!</string>
   
 <!--   Message of the day Setting -->
 

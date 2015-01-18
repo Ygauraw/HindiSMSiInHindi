@@ -25,7 +25,7 @@ private static final String CATEGORY_TABLE = "categories";
 
 private static String DB_PATH = "/data/data/rshankar.hindismsinhindi/databases/";
 private static String DB_NAME = "HindiSMS";
-private static final int DB_VERSION =07;//this version with Market version 2.2, android:versionCode="4"
+private static final int DB_VERSION =8;//this version with Market version 2.4, android:versionCode="18"
 private SQLiteDatabase mDataBase; 
 private final Context mContext;
 public DataBaseHelper(Context context) 

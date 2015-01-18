@@ -25,16 +25,21 @@ import rshankar.smsbook.adapters.CategoryAdapter;
 import rshankar.smsbook.database.MessageDBAdapter;
 import rshankar.smsbook.settings.HindiSMSInHindiSettings;
 import rshankar.smsbook.settings.StaticMethodVeriable;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -44,9 +49,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 
 
+@SuppressLint("NewApi")
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends Activity{
 	private static final String TAG = "MainActivity";
 	private static final int RESULT_SETTINGS = 1;
@@ -65,7 +75,9 @@ public class MainActivity extends Activity{
     public static List<MainCategory> mCategories=new ArrayList<MainCategory>();
 	private List<LeftPannelDataClass> mLeftPannelDataList=new ArrayList<LeftPannelDataClass>() ;
 
-    @Override
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -175,7 +187,9 @@ public class MainActivity extends Activity{
         }
     }
 
-    private void selectItem(int position) {
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
+	private void selectItem(int position) {
         // update the main content by replacing fragments
         Fragment fragment = new MessageFragment();
         Bundle args = new Bundle();
@@ -205,7 +219,9 @@ public class MainActivity extends Activity{
      * onPostCreate() and onConfigurationChanged()...
      */
 
-    @Override
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
+	@Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -281,5 +297,71 @@ public class MainActivity extends Activity{
 			return true;
 	        
 	    }
+	    
+	    @Override
+		public void onBackPressed() {
+		
+			if(!sharedpreferences.getBoolean("exit_dialog_nevershow_again", false))
+			{
+			View checkBoxView = View.inflate(this, R.layout.dialogcheckbox, null);
+			CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.checkbox);
+			checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			    @Override
+			    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+			    	Editor editor = sharedpreferences.edit();
+			    	editor.putBoolean("exit_dialog_nevershow_again", isChecked);
+			    	editor.commit();
+			    }
+			});
+			
+			checkBox.setText(getString(R.string.never_show_again));
+			
+			AlertDialog  alertDialog = new AlertDialog.Builder(this).create();
+
+			    alertDialog.setTitle(getString(R.string.exit_alert_title));
+			    alertDialog.setIcon(R.drawable.ic_rateus);
+			    alertDialog.setMessage(getString(R.string.rate_us_message));
+			    alertDialog.setView(checkBoxView);
+			    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
+
+			      public void onClick(DialogInterface dialog, int id) {
+			    	  
+			       
+			    } }); 
+
+			    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.rate_us), new DialogInterface.OnClickListener() {
+
+			      public void onClick(DialogInterface dialog, int id) {
+			    	 
+			    	 
+
+			    	  Intent  intent = new Intent(Intent.ACTION_VIEW);
+			        	intent.setData(Uri.parse("market://details?id=rshankar.hindismsinhindi"));
+			        	startActivity(intent);
+			        	
+			        	
+
+			    }}); 
+
+			    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.exit), new DialogInterface.OnClickListener() {
+
+			      public void onClick(DialogInterface dialog, int id) {
+
+			    	  
+			    	  Intent intent = new Intent(Intent.ACTION_MAIN);
+			        	intent.addCategory(Intent.CATEGORY_HOME);
+			        	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			        	startActivity(intent);
+			    }});
+			    alertDialog.show();
+		}else{
+			Intent intent = new Intent(Intent.ACTION_MAIN);
+	    	intent.addCategory(Intent.CATEGORY_HOME);
+	    	intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	startActivity(intent);
+		}
+		}
 
 }

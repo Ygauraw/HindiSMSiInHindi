@@ -52,9 +52,9 @@ public class SplashActivity extends Activity {
 	private String getDayGreeting(){
 		int hrs = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
 		String greeting = "";
-		if (hrs >=  0 && hrs <12) greeting = "सुप्रभात :\n हिंदी मैसेज में  आपका स्वागत हैं।";      // 
-		if (hrs >= 12 && hrs <17) greeting = "\n हिंदी मैसेज में  आपका स्वागत हैं।";    // After 12pm
-		if (hrs >= 17 && hrs <=23) greeting = "शुभ संध्या :\n हिंदी मैसेज में  आपका स्वागत हैं।";      // After 5pm
+		if (hrs >=  0 && hrs <12) greeting = getString(R.string.good_morning);      // 
+		if (hrs >= 12 && hrs <17) greeting = getString(R.string.good_afternoon);    // After 12pm
+		if (hrs >= 17 && hrs <=23) greeting = getString(R.string.good_evening);      // After 5pm
 		Log.v(TAG, "Greeting Message"+greeting);
 		return greeting;
 	}
